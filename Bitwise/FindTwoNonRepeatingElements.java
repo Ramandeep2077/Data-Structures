@@ -6,12 +6,12 @@ class Solution {
 			xor ^= nums[i];
 		}
 
-		int bit = xor & ~(xor - 1);
+		int rBit = xor & ~(xor - 1);
 		int num1 = 0;
 		int num2 = 0;
 
 		for (int num : nums) {
-			if ((num & bit) > 0) {
+			if ((num & rBit) > 0) {
 				num1 ^= num;
 			} else {
 				num2 ^= num;
