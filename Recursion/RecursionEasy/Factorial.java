@@ -1,4 +1,5 @@
 public class Solution {
+
 	public static void main(String[] args) {
 		int ans = fact(5);
 		System.out.println(ans);
