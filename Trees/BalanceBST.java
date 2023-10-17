@@ -1,4 +1,4 @@
-class Solution {
+class BalanceBST{
 	List<TreeNode> list = new ArrayList<>();
 
 	public TreeNode balanceBST(TreeNode root) {
