@@ -1,4 +1,4 @@
-class CountPathsForASum {
+class PathSum_III {
 	List<Integer> path = new ArrayList<>();return
 
 	helper(node, sum, path);
