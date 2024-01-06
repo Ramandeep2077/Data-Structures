@@ -1,58 +1,51 @@
+class FrogJumpII {
 
-public class FrogJumpII {
-	public static int solveTabulation(int n, int k, int[] height) {
-		// Write your code here.
-		int dp[] = new int[n];
-		Arrays.fill(dp, -1);
-		dp[0] = 0;
-		for (int idx = 1; idx < n; idx++) {
-			int mmSteps = Integer.MAX_VALUE;
-
-			for (int j = 1; j <= k; j++) {
-				if (idx - j >= 0) {
-					int left = dp[idx - j] + Math.abs(height[idx] - height[idx - j]);
-
-					mmSteps = Math.min(left, mmSteps);
-				}
-
-			}
-			dp[idx] = mmSteps;
-
-		}
-		return dp[n - 1];
-
-	}
-
-	public static int solveMemorization(int idx, int k, int[] height, int dp[]) {
-
-		if (idx == 0)
+	static int solveUtilMemorization(int ind, int[] height, int[] dp, int k) {
+		if (ind == 0)
 			return 0;
 
-		if (dp[idx] != -1)
-			return dp[idx];
+		if (dp[ind] != -1)
+			return dp[ind];
 
 		int mmSteps = Integer.MAX_VALUE;
 
 		for (int j = 1; j <= k; j++) {
-			if (idx - j >= 0) {
-				int left = solveMemorization(idx - j, k, height, dp) + Math.abs(height[idx] - height[idx - j]);
-
-				mmSteps = Math.min(left, mmSteps);
+			if (ind - j >= 0) {
+				int jump = solveUtilMemorization(ind - j, height, dp, k) + Math.abs(height[ind] - height[ind - j]);
+				mmSteps = Math.min(jump, mmSteps);
 			}
-
 		}
 
-		return dp[idx] = mmSteps;
+		return dp[ind] = mmSteps;
+	}
 
+	static int solveUtilTabulation(int n, int[] height, int[] dp, int k) {
+		dp[0] = 0;
+
+		for (int i = 1; i < n; i++) {
+			int mmSteps = Integer.MAX_VALUE;
+
+			for (int j = 1; j <= k; j++) {
+				if (i - j >= 0) {
+					int jump = dp[i - j] + Math.abs(height[i] - height[i - j]);
+					mmSteps = Math.min(jump, mmSteps);
+				}
+			}
+			dp[i] = mmSteps;
+		}
+		return dp[n - 1];
+	}
+
+	static int solve(int n, int[] height, int k) {
+		int[] dp = new int[n];
+		Arrays.fill(dp, -1);
+		return solveUtilTabulation(n, height, dp, k);
 	}
 
 	public static void main(String args[]) {
 		int height[] = { 30, 10, 60, 10, 60, 50 };
 		int n = height.length;
 		int k = 2;
-
-		int dp[] = new int[n];
-		Arrays.fill(dp, -1);
-		System.out.println(solveMemorization(n - 1, k, height, dp));
+		System.out.println(solve(n, height, k));
 	}
 }
