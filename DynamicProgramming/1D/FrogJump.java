@@ -1,5 +1,6 @@
 class FrogJump {
 	static int solveMemorization(int ind, int[] height, int[] dp) {
+
 		if (ind == 0)
 			return 0;
 		if (dp[ind] != -1)
