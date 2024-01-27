@@ -44,9 +44,8 @@ class CountSubsetsSumK {
 			dp[i][0] = 1;
 		}
 
-		if (num[0] <= k) {
-			dp[0][num[0]] = 1;
-		}
+		for (int j = 1; j <= k; j++)
+			dp[0][j] = (j == num[0]) ? 1 : 0;
 
 		for (int ind = 1; ind < n; ind++) {
 			for (int target = 1; target <= k; target++) {
@@ -72,9 +71,8 @@ class CountSubsetsSumK {
 
 		prev[0] = 1;
 
-		if (num[0] <= k) {
-			prev[num[0]] = 1;
-		}
+		for (int j = 1; j <= k; j++)
+			prev[j] = (j == num[0]) ? 1 : 0;
 
 		for (int ind = 1; ind < n; ind++) {
 
