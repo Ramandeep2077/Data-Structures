@@ -4,11 +4,14 @@ import java.util.*;
 class CountSubsetsSumK {
 
 	static int findWaysUtil(int ind, int target, int[] arr, int[][] dp) {
-		if (target == 0)
-			return 1;
 
-		if (ind == 0)
-			return arr[0] == target ? 1 : 0;
+		if (ind == 0) {
+			if (target == 0 && arr[0] == 0)
+				return 2;
+			if (target == 0 || target == arr[0])
+				return 1;
+			return 0;
+		}
 
 		if (dp[ind][target] != -1)
 			return dp[ind][target];
