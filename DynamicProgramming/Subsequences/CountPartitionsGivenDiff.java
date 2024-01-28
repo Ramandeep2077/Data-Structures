@@ -34,8 +34,19 @@ class CountPartitionsGivenDiff {
 		}
 
 		// Checking for edge cases
+		/*
+		 * If the difference totSum - d is negative, it means it's not possible to
+		 * partition the array into two subsets with the given difference d, so the
+		 * function returns 0.
+		 */
 		if (totSum - d < 0)
 			return 0;
+
+		/*
+		 * If the difference is odd, it's also not possible to achieve the target
+		 * difference by partitioning the array into two subsets of integers, so the
+		 * function returns 0.
+		 */
 		if ((totSum - d) % 2 == 1)
 			return 0;
 
