@@ -30,7 +30,7 @@ class ZeroOneKnapsack {
 		return dp[ind][W];
 	}
 
-	static int knapsack(int[] wt, int[] val, int n, int W) {
+	static int knapsack_Memorization(int[] wt, int[] val, int n, int W) {
 
 		int dp[][] = new int[n][W + 1];
 
@@ -98,6 +98,6 @@ class ZeroOneKnapsack {
 		int W = 5;
 		int n = wt.length;
 
-		System.out.println("The Maximum value of items the thief can steal is " + knapsack(wt, val, n, W));
+		System.out.println("The Maximum value of items the thief can steal is " + knapsack_Memorization(wt, val, n, W));
 	}
 }
