@@ -72,7 +72,7 @@ public class RodCutting {
 
 	}
 
-	public static int helperMem(int n, int price[]) {
+	public static int helper_Tabulation(int n, int price[]) {
 		int dp[][] = new int[n][n + 1];
 
 		for (int N = 0; N <= n; N++) {
@@ -99,7 +99,7 @@ public class RodCutting {
 
 	}
 
-	public static int helper(int idx, int n, int price[], int dp[][]) {
+	public static int helper_Memorization(int idx, int n, int price[], int dp[][]) {
 
 		if (idx == 0) {
 			return n * price[0];
