@@ -64,6 +64,11 @@ class MatrixChainMultiplication {
 		int[] arr = { 10, 20, 30, 40, 50 };
 		int n = arr.length;
 
-		System.out.println("The minimum number of operations are " + matrixMultiplication_Tabulation(arr, n));
+		int dp[][] = new int[n][n];
+		for (int row[] : dp)
+			Arrays.fill(row, -1);
+
+		System.out.println(
+				"The minimum number of operations are " + matrixMultiplication_Memorization(arr, 1, n - 1, dp));
 	}
 }
