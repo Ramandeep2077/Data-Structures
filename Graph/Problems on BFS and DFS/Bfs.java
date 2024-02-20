@@ -44,7 +44,7 @@ class Bfs {
 		adj.get(1).add(3);
 		adj.get(3).add(1);
 
-		Solution sl = new Solution();
+		Bfs sl = new Bfs();
 		ArrayList<Integer> ans = sl.bfsOfGraph(5, adj);
 		int n = ans.size();
 		for (int i = 0; i < n; i++) {
